@@ -7,6 +7,7 @@ from PIL import ImageTk
 import math
 from tkinter import ttk
 from tkinter import messagebox
+from tkinter import *
 
 """This function calculates the oxygen balance of the molecule"""
 def balox(smiles):                        
@@ -317,7 +318,7 @@ pubchem_button2 = tk.Button(insaturation, text="Open PubChem Sketcher", command=
 
 def main():
     
-    window.title("super projeej, such innovation, wow")
+    window.title("explositivity and degree of unsaturation")
     window.geometry("540x630")
     window.minsize(540,630)
     window.resizable(False, False)
