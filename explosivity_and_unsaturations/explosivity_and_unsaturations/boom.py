@@ -25,7 +25,7 @@ def ismetal(atom):
 def balox(smiles):                        
     moleculee = Chem.MolFromSmiles(smiles)              # Convert the SMILES string to a molecule object
     moleculee = Chem.AddHs(moleculee)                   # Add hydrogens
-    atom_counts = {"C":0, "H":0,"O":0}        # Initialise new dict
+    atom_counts = {"C":0, "H":0,"O":0,"Metal":0}        # Initialise new dict
     
     # Loop through atoms in the molecule and count different atom types
     for atom in moleculee.GetAtoms():
