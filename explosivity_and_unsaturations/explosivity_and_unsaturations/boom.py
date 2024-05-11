@@ -9,13 +9,14 @@ from tkinter import ttk
 from tkinter import messagebox
 from tkinter import *
 
+
 def ismetal(atom):
     """Finds if an atom is a metal
     Input: an rdkit atom object
     Returns: True if the atom is a metal, False otherwise 
     """
     n = atom.GetAtomicNum()
-    if((n>=19 and n<=31) or (n>=37 and n<=50) or (n>=55 and n<=83) or n==3 or n== 4, or n==11 or n==12 or n==13):
+    if((n>=19 and n<=31) or (n>=37 and n<=50) or (n>=55 and n<=83) or n==3 or n== 4 or n==11 or n==12 or n==13):
         return True
     return False
 
@@ -33,7 +34,7 @@ def balox(smiles):
             atom_counts[atom_symbol] += 1
         else:
             atom_counts[atom_symbol] =1
-        if(ismetal(metal)):
+        if(ismetal(atom)):
             atom_counts["Metal"]+=1
     molarmass = Descriptors.MolWt(moleculee)
     

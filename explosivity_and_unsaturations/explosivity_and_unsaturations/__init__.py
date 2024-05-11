@@ -11,3 +11,4 @@ from .boom import submitboom
 from .boom import submitinsat
 from .boom import open_pubchem_sketcher
 from .boom import main
+from .boom import ismetal
