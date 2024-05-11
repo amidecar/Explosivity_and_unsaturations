@@ -15,7 +15,7 @@ def ismetal(atom):
     Returns: True if the atom is a metal, False otherwise 
     """
     n = atom.GetAtomicNum()
-    if((n>=19 and n<=32) or (n>=37 and n<=51) or (n>=55 and n<=84) or n==3 or n== 4 or n==11 or n==12 or n==13 or (n>=87 and n<=118):
+    if((n>=19 and n<=32) or (n>=37 and n<=51) or (n>=55 and n<=84) or n==3 or n== 4 or n==11 or n==12 or n==13 or (n>=87 and n<=118)):
         return True
     return False
 
