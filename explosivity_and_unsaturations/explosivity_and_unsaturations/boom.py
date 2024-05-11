@@ -9,11 +9,22 @@ from tkinter import ttk
 from tkinter import messagebox
 from tkinter import *
 
+def ismetal(atom):
+    """Finds if an atom is a metal
+    Input: an rdkit atom object
+    Returns: True if the atom is a metal, False otherwise 
+    """
+    n = atom.GetAtomicNum()
+    if((n>=19 and n<=31) or (n>=37 and n<=50) or (n>=55 and n<=83) or n==3 or n== 4, or n==11 or n==12 or n==13):
+        return True
+    return False
+
+
 """This function calculates the oxygen balance of the molecule"""
 def balox(smiles):                        
     moleculee = Chem.MolFromSmiles(smiles)              # Convert the SMILES string to a molecule object
     moleculee = Chem.AddHs(moleculee)                   # Add hydrogens
-    atom_counts = {"C":0, "H":0,"O":0}                  # Initialise new dict
+    atom_counts = {"C":0, "H":0,"O":0,"Metal":0}        # Initialise new dict
     
     # Loop through atoms in the molecule and count different atom types
     for atom in moleculee.GetAtoms():
@@ -22,10 +33,12 @@ def balox(smiles):
             atom_counts[atom_symbol] += 1
         else:
             atom_counts[atom_symbol] =1
+        if(ismetal(metal)):
+            atom_counts["Metal"]+=1
     molarmass = Descriptors.MolWt(moleculee)
     
     #calculate oxygen balance from Marendaz formula
-    return -1600 * (2*atom_counts["C"] + atom_counts["H"]/2 - atom_counts["O"])/molarmass
+    return -1600 * (2*atom_counts["C"] + atom_counts["H"]/2 + atom_counts["Metal"] - atom_counts["O"])/molarmass
 
 
 """this function canonicalises the smiles given. Some molecules have more than 1 smile to describe them,
