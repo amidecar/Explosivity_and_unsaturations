@@ -9,7 +9,6 @@ from tkinter import ttk
 from tkinter import messagebox
 from tkinter import *
 
-
 def ismetal(atom):
     """Finds if an atom is a metal
     Input: an rdkit atom object
@@ -21,11 +20,12 @@ def ismetal(atom):
     return False
 
 
+
 """This function calculates the oxygen balance of the molecule"""
 def balox(smiles):                        
     moleculee = Chem.MolFromSmiles(smiles)              # Convert the SMILES string to a molecule object
     moleculee = Chem.AddHs(moleculee)                   # Add hydrogens
-    atom_counts = {"C":0, "H":0,"O":0,"Metal":0}        # Initialise new dict
+    atom_counts = {"C":0, "H":0,"O":0}        # Initialise new dict
     
     # Loop through atoms in the molecule and count different atom types
     for atom in moleculee.GetAtoms():
@@ -34,8 +34,10 @@ def balox(smiles):
             atom_counts[atom_symbol] += 1
         else:
             atom_counts[atom_symbol] =1
+
         if(ismetal(atom)):
             atom_counts["Metal"]+=1
+
     molarmass = Descriptors.MolWt(moleculee)
     
     #calculate oxygen balance from Marendaz formula
