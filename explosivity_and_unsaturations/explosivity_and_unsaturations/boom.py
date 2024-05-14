@@ -10,19 +10,21 @@ from tkinter import messagebox
 from tkinter import *
 
 def ismetal(atom):
-    """Finds if an atom is a metal
+    
+    """ Finds if an atom is a metal
     Input: an rdkit atom object
     Returns: True if the atom is a metal, False otherwise 
     """
+    
     n = atom.GetAtomicNum()
     if((n>=19 and n<=32) or (n>=37 and n<=51) or (n>=55 and n<=84) or n==3 or n== 4 or n==11 or n==12 or n==13 or (n>=87 and n<=118)):
         return True
     return False
 
-
-
-"""This function calculates the oxygen balance of the molecule"""
-def balox(smiles):                        
+def balox(smiles):         
+    
+    """This function calculates the oxygen balance of the molecule"""
+    
     moleculee = Chem.MolFromSmiles(smiles)              # Convert the SMILES string to a molecule object
     moleculee = Chem.AddHs(moleculee)                   # Add hydrogens
     atom_counts = {"C":0, "H":0,"O":0,"Metal":0}        # Initialise new dict
@@ -44,29 +46,34 @@ def balox(smiles):
     return -1600 * (2*atom_counts["C"] + atom_counts["H"]/2 + atom_counts["Metal"] - atom_counts["O"])/molarmass
 
 
-"""this function canonicalises the smiles given. Some molecules have more than 1 smile to describe them,
-that they are recgnized by the otehr functions"""
+
 def canonicalize_smiles(smiles: str) -> str:
+    
+    """this function canonicalises the smiles given. Some molecules have more than 1 smile to describe them,
+    that they are recgnized by the otehr functions"""
+    
     if not isinstance(smiles, str):
-        messagebox.showerror('Warning!', 'Invalid type {type(smiles)}: smiles must be a string')
+        if __name__ == '__main__':
+            messagebox.showerror('Warning!', 'Invalid type {type(smiles)}: smiles must be a string')
         raise TypeError("Invalid type {type(smiles)}: smiles must be a string")
         
-    
     mol = Chem.MolFromSmiles(smiles)
 
     if mol is None:
-        messagebox.showerror('Warning!', "Could not convert input to mol")
+        if __name__ == '__main__':
+            messagebox.showerror('Warning!', "Could not convert input to mol")
         raise ValueError("Could not convert input to mol")
-        
-
     return Chem.MolToSmiles(mol)
 
 
-""""This function recognizes the possibly explosive groups in the molecule. This is
-then used by the highlightmol function to highlight those groups. It also create
-a global valuable that checks if there is at least one possibly explosive group"""
+
 def findgroups(smiles:str):
-    global group_check
+    
+    """"This function recognizes the possibly explosive groups in the molecule. This is
+    then used by the highlightmol function to highlight those groups. It also create
+    a global valuable that checks if there is at least one possibly explosive group"""
+    
+    #global group_check
     group_check=0
     highlight_boom={}
     molecule= Chem.MolFromSmiles(smiles)
@@ -109,11 +116,14 @@ def findgroups(smiles:str):
             group_check+=1
         highlight_boom[group]= matches
     
-    return highlight_boom
+    return (highlight_boom,group_check)
 
 
-""" this function calculates the degree of insturaton of a molecule"""
+
 def insat(smiles):                        
+
+    """ this function calculates the degree of insturaton of a molecule"""
+
     moleculee = Chem.MolFromSmiles(smiles)              # Convert the SMILES string to a molecule object
     moleculee = Chem.AddHs(moleculee)                   # Add hydrogens
     atom_counts = {0:0, 1:0, 2:0, 3:0, 4:0, 5:0, 6:0, 7:0, 8:0}                  # Initialise new dict
@@ -132,8 +142,11 @@ def insat(smiles):
     text2= "The degree of insaturation is " + str(ddi) + "."
     return text2
 
-"""This function find the insaturations"""
+
 def findinsaturation(smiles:str):
+
+    """This function find the insaturations"""
+    
     highlight_insat={}
     molecule= Chem.MolFromSmiles(smiles)
     insaturation=["[*]=[*]",
@@ -147,8 +160,11 @@ def findinsaturation(smiles:str):
         highlight_insat[group]= matches
     return highlight_insat
 
-"""this function highlights the groups found by other functions"""
+
 def highlightmol(smiles,dico):
+
+    """this function highlights the groups found by other functions"""
+    
     from rdkit.Chem import Draw
     mol= Chem.MolFromSmiles(smiles)
     highlight_atoms = set()
@@ -165,12 +181,13 @@ def highlightmol(smiles,dico):
     img=img.resize((450, 450))
     img_tk = ImageTk.PhotoImage(img)
     return img_tk
-    
 
 
-"""this function takes the IUPAC name of the molecule as an input and transforms it
-into a smile for the other function to use."""
 def iupac_to_smiles(iupac_name):
+    
+    """this function takes the IUPAC name of the molecule as an input and transforms it
+    into a smile for the other function to use."""
+    
     iupac_name_spaceless=iupac_name.replace(" ","%20") # this transforms sapces into the equivalent for URLs
     # URL for CIR API
     url = "https://cactus.nci.nih.gov/chemical/structure/" + urllib.parse.quote_plus(iupac_name_spaceless) + "/smiles"
@@ -186,12 +203,13 @@ def iupac_to_smiles(iupac_name):
         return "Unable to convert IUPAC name to SMILES"
 
 
-"""this function uses the group_check and the balox function results to find a 
-molecule likelihood to explode."""
-def explosivity(oxygen_balance):
+def explosivity(oxygen_balance,group_check):
 
-    ox = math.floor(oxygen_balance)
+    """this function uses the group_check and the balox function results to find a 
+    molecule likelihood to explode."""
     
+    ox = math.floor(oxygen_balance)
+
     if group_check == 0:
         text1="No explosible groups, the molecule is not explosive."
     else:
@@ -205,23 +223,24 @@ def explosivity(oxygen_balance):
             text1 ="              The oxygen balance is "+str(ox) +",the molecule is very explosive.              "
     return text1
 
-    
 
-
-
-"""this function makes the interface work"""
 def submitboom():
+
+    """this function makes the interface work"""
+    
     saas = int(aaa.get())
     nameee = enteredname.get()
     smilesee = enteredsmiles.get()
     # Retrieve the input text when the submit button is clicked
     if ((saas==0) and (nameee =="")):
         print("can't be null")
-        messagebox.showerror('Warning!', 'Error: Write something before submitting !')
+        if __name__ == '__main__':
+            messagebox.showerror('Warning!', 'Error: Write something before submitting !')
         return
     elif ((smilesee=="") and (saas==1)):
         print("can't be null")
-        messagebox.showerror('Warning!', 'Error: Write something before submitting !')
+        if __name__ == '__main__':
+           messagebox.showerror('Warning!', 'Error: Write something before submitting !')
 
     if saas==0:
         print("Name is selected. Entered Name:", enteredname.get())
@@ -241,9 +260,9 @@ def submitboom():
     
         
     smiles=canonicalize_smiles(smiles) #FONCTION QUI CANONISE LES SMILES ET FAIT UNE ERREUR SI LE SMILES EST MAUVAIS
-    dico=findgroups(smiles)
+    (dico,group_check)=findgroups(smiles)
     oxygen_balance = balox(smiles)
-    texte1 =explosivity(oxygen_balance)
+    texte1 =explosivity(oxygen_balance,group_check)
     global label1 
     label1 = tk.Label(kaboomity, text=texte1, fg="black")
     label1.pack_forget()
@@ -255,6 +274,7 @@ def submitboom():
     
     window.mainloop()
 
+
 def submitinsat():
     # Retrieve the input text when the submit button is clicked
     saas = int(aaa.get())
@@ -263,11 +283,13 @@ def submitinsat():
     # Retrieve the input text when the submit button is clicked
     if ((saas==0) and (nameee =="")):
         print("can't be null")
-        messagebox.showerror('Warning!', 'Error: Write something before submitting !')
+        if __name__ == '__main__':
+            messagebox.showerror('Warning!', 'Error: Write something before submitting !')
         return
     elif ((smilesee=="") and (saas==1)):
         print("can't be null")
-        messagebox.showerror('Warning!', 'Error: Write something before submitting !')
+        if __name__ == '__main__':
+            messagebox.showerror('Warning!', 'Error: Write something before submitting !')
 
     if not aaa.get():
         print("Name is selected. Entered Name:", enteredname.get())
@@ -298,8 +320,10 @@ def submitinsat():
     window.mainloop()
 
 
-"""This function makes the open puchem sketcher button work"""
 def open_pubchem_sketcher():
+
+    """This function makes the open puchem sketcher button work"""
+    
     # Open PubChem Sketcher in a new tab
     url = "https://pubchem.ncbi.nlm.nih.gov/edit3/index.html"
     webbrowser.open_new_tab(url)
@@ -330,9 +354,9 @@ pubchem_button = tk.Button(kaboomity, text="Open PubChem Sketcher", command=open
 pubchem_button2 = tk.Button(insaturation, text="Open PubChem Sketcher", command=open_pubchem_sketcher)
 
 
-"""this is the main function,it initialises the tkinter window"""
-
 def main():
+
+    """this is the main function,it initialises the tkinter window"""
     
     window.title("explositivity and degree of unsaturation")
     window.geometry("540x630")
@@ -356,8 +380,6 @@ def main():
     entrysmiles.place(x=250,y=45)
     entrysmiles2.place(x=250,y=45)
 
-    
-
     # Create an entry widget for entering the name
 
     submit_button.place(x=0,y=70)
@@ -373,6 +395,8 @@ def main():
 
     # Run the Tkinter event loop
     window.mainloop()
+
+
 if __name__ == '__main__':
     smiles = ""
     main()
