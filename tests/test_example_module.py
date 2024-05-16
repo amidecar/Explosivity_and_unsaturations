@@ -1,6 +1,6 @@
-from explosivity_and_unsaturations.example_module import hello_smiles
+from explosivity_and_unsaturations.example_module import balox
 
 
 # Test the function
 def test_hello_smiles():
-    assert hello_smiles("C(=O)O") == "Hello, C(=O)O!", "Test failed: SMILES input"
+    assert balox("O=C=O") == 0, "Test failed: SMILES input"

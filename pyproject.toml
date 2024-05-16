@@ -9,10 +9,12 @@ requires-python = ">=3.10"
 license = {file = "LICENSE"}
 description = "determining if a molecule is explosive, and find it's unsaturations"
 dependencies = [
-    # "rdkit",
+    "rdkit",
+    "tkinter",
+    "math"
 ]
 authors = [
-    {name = "Emile", email = "emile.chauvel@epfl.ch"}
+    {name = "Emile", email = "emile.chauvel@epfl.ch"},{name = "Ami", email = "aaaa@epfl.ch"}
 ]
 classifiers = [
     "Development Status :: 3 - Alpha",
