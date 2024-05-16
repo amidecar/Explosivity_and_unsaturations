@@ -177,9 +177,9 @@ def highlightmol(smiles,dico):
                     highlight_bonds.append(bond.GetIdx())  # Store bond indices
             
     img = Draw.MolToImage(mol, highlightAtoms=list(highlight_atoms), highlightBonds=highlight_bonds,kekulize = False)
-    img=img.resize((450, 450))
-    img_tk = ImageTk.PhotoImage(img)
-    return img_tk
+    #img=img.resize((450, 450))
+    #img_tk = ImageTk.PhotoImage(img)
+    return img
 
 
 def iupac_to_smiles(iupac_name):
@@ -267,8 +267,10 @@ def submitboom():
     label1.pack_forget()
     label1.place(relx=0.5,rely=0.2, anchor="center")
     aa=highlightmol(smiles,dico)
+    aa=aa.resize((450, 450))
+    img_tk = ImageTk.PhotoImage(aa)
     global labela
-    labela = tk.Label(kaboomity, image=aa)
+    labela = tk.Label(kaboomity, image=img_tk)
     labela.place(x=45,y=140)
     
     window.mainloop()
