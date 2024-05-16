@@ -1,0 +1,9 @@
+# Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
+_commit: 66fd52c
+_src_path: https://github.com/schwallergroup/copier-liac-minimal
+author_email: emile.chauvel@epfl.ch
+author_name: Emile
+github_org: Chemikarl
+package_name: explosivity_and_unsaturations
+project_name: explosivity_and_unsaturations
+short_description: determining if a molecule is explosive, and find it's unsaturations
