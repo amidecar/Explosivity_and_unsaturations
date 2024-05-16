@@ -7,3 +7,6 @@ def test_hello_smiles():
 
 def test_jaaj():
     assert insat("O=C=O") == 2, "Test failed: wrong value"
+    
+def test_jaaj2():
+    assert insat("C") == 100, "Test failed: learn how to count"
