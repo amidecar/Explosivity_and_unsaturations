@@ -53,14 +53,14 @@ def canonicalize_smiles(smiles: str) -> str:
     that they are recgnized by the otehr functions"""
     
     if not isinstance(smiles, str):
-        if __name__ == '__main__':
+        if ismain:
             messagebox.showerror('Warning!', 'Invalid type {type(smiles)}: smiles must be a string')
         raise TypeError("Invalid type {type(smiles)}: smiles must be a string")
         
     mol = Chem.MolFromSmiles(smiles)
 
     if mol is None:
-        if __name__ == '__main__':
+        if ismain:
             messagebox.showerror('Warning!', "Could not convert input to mol")
         raise ValueError("Could not convert input to mol")
     return Chem.MolToSmiles(mol)
@@ -233,12 +233,12 @@ def submitboom():
     # Retrieve the input text when the submit button is clicked
     if ((saas==0) and (nameee =="")):
         print("can't be null")
-        if __name__ == '__main__':
+        if ismain:
             messagebox.showerror('Warning!', 'Error: Write something before submitting !')
         return
     elif ((smilesee=="") and (saas==1)):
         print("can't be null")
-        if __name__ == '__main__':
+        if ismain:
            messagebox.showerror('Warning!', 'Error: Write something before submitting !')
 
     if saas==0:
@@ -284,12 +284,12 @@ def submitinsat():
     # Retrieve the input text when the submit button is clicked
     if ((saas==0) and (nameee =="")):
         print("can't be null")
-        if __name__ == '__main__':
+        if ismain:
             messagebox.showerror('Warning!', 'Error: Write something before submitting !')
         return
     elif ((smilesee=="") and (saas==1)):
         print("can't be null")
-        if __name__ == '__main__':
+        if ismain:
             messagebox.showerror('Warning!', 'Error: Write something before submitting !')
 
     if not aaa.get():
@@ -339,7 +339,8 @@ def main():
     global window,tabs_container,kaboomity,insaturation,aaa ,name_button,name_button2,smile_button,smile_button2,enteredname,entryname
     global entryname2,enteredsmiles,entrysmiles,entrysmiles2,submit_button,submit_button2,pubchem_button,pubchem_button2
     
-    
+    global ismain
+    ismain = True #to replace if __name__ == True even if main() is called from elsewere
     
     
     
