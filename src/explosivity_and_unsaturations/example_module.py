@@ -327,35 +327,45 @@ def open_pubchem_sketcher():
     url = "https://pubchem.ncbi.nlm.nih.gov/edit3/index.html"
     webbrowser.open_new_tab(url)
 
-window = tk.Tk()
-tabs_container=ttk.Notebook(window)
-tabs_container.pack(fill="both", expand=True)
-kaboomity= ttk.Frame(tabs_container)
-insaturation = ttk.Frame(tabs_container)
-tabs_container.add(kaboomity, text= "explosivity")
-tabs_container.add(insaturation, text= "degree of insaturation")
-tabs_container.pack()
-aaa = IntVar()
 
-name_button = tk.Radiobutton(kaboomity, text="Check to enter the molecule IUPAC name", variable=aaa,value=0)
-name_button2 = tk.Radiobutton(insaturation, text="Check to enter the molecule IUPAC name", variable=aaa,value=0)
-smile_button = tk.Radiobutton(kaboomity, text="Check to enter the molecule smiles", variable=aaa,value=1)
-smile_button2 = tk.Radiobutton(insaturation, text="Check to enter the molecule smiles", variable=aaa,value=1)
-enteredname = tk.StringVar()
-entryname = tk.Entry(kaboomity, textvariable=enteredname)
-entryname2 = tk.Entry(insaturation, textvariable = enteredname)
-enteredsmiles = tk.StringVar()
-entrysmiles = tk.Entry(kaboomity, textvariable=enteredsmiles)
-entrysmiles2 = tk.Entry(insaturation, textvariable=enteredsmiles)
-submit_button = tk.Button(kaboomity, text="Submit", command=submitboom)
-submit_button2 = tk.Button(insaturation, text="Submit", command=submitinsat)
-pubchem_button = tk.Button(kaboomity, text="Open PubChem Sketcher", command=open_pubchem_sketcher)
-pubchem_button2 = tk.Button(insaturation, text="Open PubChem Sketcher", command=open_pubchem_sketcher)
 
 
 def main():
 
     """this is the main function,it initialises the tkinter window"""
+    
+    global window,tabs_container,kaboomity,insaturation,aaa ,name_button,name_button2,smile_button,smile_button2,enteredname,entryname
+    global entryname2,enteredsmiles,entrysmiles,entrysmiles2,submit_button,submit_button2,pubchem_button,pubchem_button2
+    
+    
+    
+    
+    
+    
+    window = tk.Tk()
+    tabs_container=ttk.Notebook(window)
+    tabs_container.pack(fill="both", expand=True)
+    kaboomity= ttk.Frame(tabs_container)
+    insaturation = ttk.Frame(tabs_container)
+    tabs_container.add(kaboomity, text= "explosivity")
+    tabs_container.add(insaturation, text= "degree of insaturation")
+    tabs_container.pack()
+    aaa = IntVar()
+
+    name_button = tk.Radiobutton(kaboomity, text="Check to enter the molecule IUPAC name", variable=aaa,value=0)
+    name_button2 = tk.Radiobutton(insaturation, text="Check to enter the molecule IUPAC name", variable=aaa,value=0)
+    smile_button = tk.Radiobutton(kaboomity, text="Check to enter the molecule smiles", variable=aaa,value=1)
+    smile_button2 = tk.Radiobutton(insaturation, text="Check to enter the molecule smiles", variable=aaa,value=1)
+    enteredname = tk.StringVar()
+    entryname = tk.Entry(kaboomity, textvariable=enteredname)
+    entryname2 = tk.Entry(insaturation, textvariable = enteredname)
+    enteredsmiles = tk.StringVar()
+    entrysmiles = tk.Entry(kaboomity, textvariable=enteredsmiles)
+    entrysmiles2 = tk.Entry(insaturation, textvariable=enteredsmiles)
+    submit_button = tk.Button(kaboomity, text="Submit", command=submitboom)
+    submit_button2 = tk.Button(insaturation, text="Submit", command=submitinsat)
+    pubchem_button = tk.Button(kaboomity, text="Open PubChem Sketcher", command=open_pubchem_sketcher)
+    pubchem_button2 = tk.Button(insaturation, text="Open PubChem Sketcher", command=open_pubchem_sketcher)
     
     window.title("explositivity and degree of unsaturation")
     window.geometry("540x630")
