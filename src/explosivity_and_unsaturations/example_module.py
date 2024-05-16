@@ -139,8 +139,7 @@ def insat(smiles):
     ddi= (ddi + 2)/2
     if ddi<0:
         ddi=0
-    text2= "The degree of insaturation is " + str(ddi) + "."
-    return text2
+    return ddi
 
 
 def findinsaturation(smiles:str):
@@ -309,14 +308,16 @@ def submitinsat():
         print("Neither Name nor Smile is selected.")
     smiles=canonicalize_smiles(smiles,True) #FONCTION QUI CANONISE LES SMILES ET FAIT UNE ERREUR SI LE SMILES EST MAUVAIS
     dico=findinsaturation(smiles)
-    texte2 = insat(smiles)
+    texte2 = "The degree of insaturation is " + str(insat(smiles)) + "."
     global label2 
     label2 = tk.Label(insaturation, text=texte2, fg="black")
     label2.pack_forget()
     label2.place(relx=0.5,rely=0.2, anchor="center")
     bb=highlightmol(smiles,dico)
+    bb=bb.resize((450, 450))
+    img_tk = ImageTk.PhotoImage(bb)
     global labelb
-    labelb = tk.Label(insaturation, image=bb)
+    labelb = tk.Label(insaturation, image=img_tk)
     labelb.place(x=45,y=140)
     
     window.mainloop()
