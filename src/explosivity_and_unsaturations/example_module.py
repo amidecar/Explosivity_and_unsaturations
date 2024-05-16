@@ -47,7 +47,7 @@ def balox(smiles):
 
 
 
-def canonicalize_smiles(smiles: str) -> str:
+def canonicalize_smiles(smiles: str, ismain=False) -> str:
     
     """this function canonicalises the smiles given. Some molecules have more than 1 smile to describe them,
     that they are recgnized by the otehr functions"""
@@ -64,7 +64,6 @@ def canonicalize_smiles(smiles: str) -> str:
             messagebox.showerror('Warning!', "Could not convert input to mol")
         raise ValueError("Could not convert input to mol")
     return Chem.MolToSmiles(mol)
-
 
 
 def findgroups(smiles:str):
@@ -258,7 +257,7 @@ def submitboom():
     #print(smiles)
     
         
-    smiles=canonicalize_smiles(smiles) #FONCTION QUI CANONISE LES SMILES ET FAIT UNE ERREUR SI LE SMILES EST MAUVAIS
+    smiles=canonicalize_smiles(smiles,True) #FONCTION QUI CANONISE LES SMILES ET FAIT UNE ERREUR SI LE SMILES EST MAUVAIS
     (dico,group_check)=findgroups(smiles)
     oxygen_balance = balox(smiles)
     texte1 =explosivity(oxygen_balance,group_check)
@@ -306,7 +305,7 @@ def submitinsat():
 
     else:
         print("Neither Name nor Smile is selected.")
-    smiles=canonicalize_smiles(smiles) #FONCTION QUI CANONISE LES SMILES ET FAIT UNE ERREUR SI LE SMILES EST MAUVAIS
+    smiles=canonicalize_smiles(smiles,True) #FONCTION QUI CANONISE LES SMILES ET FAIT UNE ERREUR SI LE SMILES EST MAUVAIS
     dico=findinsaturation(smiles)
     texte2 = insat(smiles)
     global label2 
