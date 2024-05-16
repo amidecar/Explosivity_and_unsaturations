@@ -124,7 +124,7 @@ def insat(smiles):
 
     moleculee = Chem.MolFromSmiles(smiles)              # Convert the SMILES string to a molecule object
     moleculee = Chem.AddHs(moleculee)                   # Add hydrogens
-    atom_counts = {0:0, 1:0, 2:0, 3:0, 4:0, 5:0, 6:0, 7:0, 8:0}                  # Initialise new dict
+    atom_counts = {}                  # Initialise new dict
     
     # Loop through atoms in the molecule and count different atom types
     for atom in moleculee.GetAtoms():
@@ -133,8 +133,10 @@ def insat(smiles):
             atom_counts[atom_valence] += 1
         else:
             atom_counts[atom_valence] =1
-    ddi=((6*atom_counts[8] + 5*atom_counts[7] + 4*atom_counts[6] + 3*atom_counts[5]
-         + 2*atom_counts[4] + 1*atom_counts[3] - 1*atom_counts[1]-2*atom_counts[0]+2)/2)
+    ddi=0
+    for i in atom_counts.keys():
+        ddi= ddi + (i-2)*atom_counts[i]
+    ddi= (ddi + 2)/2
     if ddi<0:
         ddi=0
     text2= "The degree of insaturation is " + str(ddi) + "."
