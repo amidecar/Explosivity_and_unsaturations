@@ -1,4 +1,4 @@
-<[Project Logo] align="center">
+<p align="center">
 ![Project Logo](assets/boom.png)
 
 ![Coverage Status](assets/coverage-badge.svg)
@@ -12,20 +12,25 @@ explosivity_and_unsaturations
 
 determining if a molecule is explosive, and find it's unsaturations
 
-## 🔥 Usage
+##  Usage
 
 ```python
-from mypackage import main_func
+#if you want to import only one function, in this example balox
+from explosiosivity_and_unsaturations import balox
 
-# One line to rule them all
-result = main_func(data)
+result_1 = balox(data)
+
+#or import the whole package to get acces to every function
+import explosivity_and_unsaturations as eau
+
+result_2 = eau.function(data)
 ```
 
 This usage example shows how to quickly leverage the package's main functionality with just one line of code (or a few lines of code). 
 After importing the `main_func` (to be renamed by you), you simply pass in your `data` and get the `result` (this is just an example, your package might have other inputs and outputs). 
 Short and sweet, but the real power lies in the detailed documentation.
 
-## 👩‍💻 Installation
+## Installation
 
 Create a new environment, you may also give the environment a different name. 
 
