@@ -213,7 +213,7 @@ def explosivity(oxygen_balance,group_check):
         text1="No explosible groups, the molecule is not explosive."
     else:
         if oxygen_balance <=-200:
-            text1 = "              The oxygen balance is: "+str(ox) +",the molecule is not explosive.              "
+            text1 = "              The oxygen balance is "+str(ox) +",the molecule is not explosive.              "
         elif -200 <oxygen_balance <=-160:
             text1 ="              The oxygen balance is "+str(ox) +",the molecule is a mildly explosive.              "
         elif -160<oxygen_balance<=-80 or 12 <oxygen_balance:

@@ -17,8 +17,8 @@ def test_insat():
     
 def test_ismetal():
     assert ismetal(Chem.Atom("C")) == False,"Test failed: the wrong value was returned"
-    assert ismetal(Chem.Atom("[Co]")) == True,"Test failed: the wrong value was returned"
-    assert ismetal(Chem.Atom("[Ge")) == True, "Test failed: the wrong value was returned"
+    assert ismetal(Chem.Atom("Co")) == True,"Test failed: the wrong value was returned"
+    assert ismetal(Chem.Atom("Ge")) == True, "Test failed: the wrong value was returned"
     assert ismetal(Chem.Atom("I")) == False, "Test failed: the wrong value was returned"
     
 def test_iupac_to_smiles():
@@ -27,12 +27,12 @@ def test_iupac_to_smiles():
     assert iupac_to_smiles(("water")) == "O","Test failed: the wrong SMILES was returned"
 
 def test_explosivity():
-    assert explosivity(0,0) == "No explosible groups, the molecule is not explosive.", "Test failed: the wrong value was returned"
-    assert explosivity(0,1) ==  "The oxygen balance is 0,the molecule is very explosive.", "Test failed: the wrong value was returned"
-    assert explosivity(100,1) == "The oxygen balance is 100,the molecule is explosive.","Test failed: the wrong value was returned"
-    assert explosivity(-180,567890) == " The oxygen balance is -180,the molecule is a mildly explosive.","Test failed: the wrong value was returned"
-    assert explosivity(-500,2) == "The oxygen balance is: -500,the molecule is not explosive.","Test failed: the wrong value was returned"
-    assert explosivity(-100.567,9) == "The oxygen balance is -101,the molecule is explosive","Test failed: the wrong value was returned"
+    assert explosivity(0,0) == "              No explosible groups, the molecule is not explosive.              ", "Test failed: the wrong value was returned"
+    assert explosivity(0,1) ==  "              The oxygen balance is 0,the molecule is very explosive.              ", "Test failed: the wrong value was returned"
+    assert explosivity(100,1) == "              The oxygen balance is 100,the molecule is explosive.              ","Test failed: the wrong value was returned"
+    assert explosivity(-180,567890) == "              The oxygen balance is -180,the molecule is a mildly explosive.              ","Test failed: the wrong value was returned"
+    assert explosivity(-500,2) == "              The oxygen balance is -500,the molecule is not explosive.              ","Test failed: the wrong value was returned"
+    assert explosivity(-100.567,9) == "              The oxygen balance is -101,the molecule is explosive"              ,"Test failed: the wrong value was returned"
     
 def test_canonicalize_smiles():
     assert canonicalize_smiles("C") == "C", "Test failed: the wrong SMILES was returned"
