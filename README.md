@@ -1,5 +1,5 @@
-![Project Logo](assets/banner.png)
-This is a test
+![Project Logo](assets/boom.png)
+
 ![Coverage Status](assets/coverage-badge.svg)
 
 <h1 align="center">
