@@ -1,3 +1,4 @@
+<[Project Logo] align="center">
 ![Project Logo](assets/boom.png)
 
 ![Coverage Status](assets/coverage-badge.svg)
