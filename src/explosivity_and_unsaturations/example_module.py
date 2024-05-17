@@ -72,7 +72,7 @@ def findgroups(smiles:str):
     then used by the highlightmol function to highlight those groups. It also create
     a global valuable that checks if there is at least one possibly explosive group"""
     
-    #global group_check
+    #group_check
     group_check=0
     highlight_boom={}
     molecule= Chem.MolFromSmiles(smiles)
