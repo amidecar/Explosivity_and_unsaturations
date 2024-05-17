@@ -32,7 +32,7 @@ def test_explosivity():
     assert explosivity(100,1) == "              The oxygen balance is 100,the molecule is explosive.              ","Test failed: the wrong value was returned"
     assert explosivity(-180,567890) == "              The oxygen balance is -180,the molecule is a mildly explosive.              ","Test failed: the wrong value was returned"
     assert explosivity(-500,2) == "              The oxygen balance is -500,the molecule is not explosive.              ","Test failed: the wrong value was returned"
-    assert explosivity(-100.567,9) == "              The oxygen balance is -101,the molecule is explosive"              ,"Test failed: the wrong value was returned"
+    assert explosivity(-100.567,9) == "              The oxygen balance is -101,the molecule is explosive              ","Test failed: the wrong value was returned"
     
 def test_canonicalize_smiles():
     assert canonicalize_smiles("C") == "C", "Test failed: the wrong SMILES was returned"
