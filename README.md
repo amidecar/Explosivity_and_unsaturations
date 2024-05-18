@@ -6,11 +6,41 @@
 <h1 align="center">
 explosivity_and_unsaturations
 </h1>
+<h2 align="center">
+Determine if a molecules is explosive and find its unsaturations.
 
 <br>
 
+This program is made of two different parts.
+The first one can determine if a molecule is explosive, gives the oxygen balance if it is and highlights in the molecule where the explosible are.
+The second part calculates the degree if unsaturation and highlights where these unsaturations are in the molecule.
 
-determining if a molecule is explosive, and find it's unsaturations
+## How to install the package
+
+First, clone the respository on your own device
+
+```
+git clone https://github.com/amidecar/Projeej
+```
+
+Select the environment in which you want to install the package or,
+Create a new environment, you may also give the environment a different name. 
+
+```
+conda create -n explosivity_and_unsaturations python=3.10 
+```
+
+```
+conda activate explosivity_and_unsaturations
+cd path/to/your/cloned/repository
+(conda_env)  pip install .
+```
+
+If you need jupyter lab, install it 
+
+```
+(explosivity_and_unsaturations) $ pip install jupyterlab
+```
 
 ##  Usage
 
@@ -25,30 +55,6 @@ import explosivity_and_unsaturations as eau
 
 result_2 = eau.function(data)
 ```
-
-This usage example shows how to quickly leverage the package's main functionality with just one line of code (or a few lines of code). 
-After importing the `main_func` (to be renamed by you), you simply pass in your `data` and get the `result` (this is just an example, your package might have other inputs and outputs). 
-Short and sweet, but the real power lies in the detailed documentation.
-
-## Installation
-
-Create a new environment, you may also give the environment a different name. 
-
-```
-conda create -n explosivity_and_unsaturations python=3.10 
-```
-
-```
-conda activate explosivity_and_unsaturations
-(conda_env) $ pip install .
-```
-
-If you need jupyter lab, install it 
-
-```
-(explosivity_and_unsaturations) $ pip install jupyterlab
-```
-
 
 ## 🛠️ Development installation
 
