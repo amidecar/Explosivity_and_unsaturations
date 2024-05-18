@@ -1,5 +1,5 @@
 <p align="center">
-  <[Project Logo](assets/boom.png)
+  <img src= asset/boom.png />
 </p>
 
 ![Coverage Status](assets/coverage-badge.svg) ça non plus jsp
@@ -10,7 +10,7 @@ explosivity_and_unsaturations
 
 <h2 align="center">
 Determine if a molecules is explosive and find its unsaturations.
-</h2>h2
+</h2>
 
 <br>
 
