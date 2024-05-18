@@ -1,5 +1,5 @@
 <p align="center">
-  <img src= asset/boom.png />
+  <img src= assets/boom.png />
 </p>
 
 ![Coverage Status](assets/coverage-badge.svg) ça non plus jsp
