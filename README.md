@@ -1,6 +1,6 @@
 <p align="center">
 
-  <img src="assets/boom2.png" width="350" title="boom">
+  <img src="assets/boom2.png" width="286" title="boom">
 
 </p>
 
