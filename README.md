@@ -1,5 +1,7 @@
 <p align="center">
-  <img src= assets/boom.png />
+
+  <img src="assets/boom2.png" width="350" title="boom">
+
 </p>
 
 <h1 align="center">
