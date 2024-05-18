@@ -2,20 +2,18 @@
   <img src= assets/boom.png />
 </p>
 
-![Coverage Status](assets/coverage-badge.svg) ça non plus jsp
-
 <h1 align="center">
 explosivity_and_unsaturations
 </h1>
 
 <h2 align="center">
-Determine if a molecules is explosive and find its unsaturations.
+Determine if a compound is explosive and find its unsaturations.
 </h2>
 
 <br>
 
 This program is made of two different parts.
-The first one can determine if a molecule is explosive, gives the oxygen balance if it is and highlights in the molecule where the explosible are.
+The first one can determine if a molecule is explosive, gives the oxygen balance if it is, and highlights in the molecule where the explosible groups are.
 The second part calculates the degree of unsaturation and highlights where these unsaturations are in the molecule.
 
 ## How to install the package
@@ -62,7 +60,7 @@ import explosivity_and_unsaturations as eau
 result_2 = eau.function(data)
 ```
 
-## 🛠️ Development installation ça jsp dis moi
+## Using that package on your own repository
 
 Initialize Git (only for the first time). 
 
@@ -70,11 +68,10 @@ Note: You should have create an empty repository on `https://github.com:Chemikar
 
 ```
 git init
-git add * 
-git add .*
-git commit -m "Initial commit" 
+git add .
+git commit -m "Initial package upload"
 git branch -M main
-git remote add origin git@github.com:Chemikarl/explosivity_and_unsaturations.git 
+git remote add origin YOUR_PERSONAL_REMOTE_REPO_URL
 git push -u origin main
 ```
 
@@ -95,5 +92,6 @@ To check if the code runs properly and give back the expected result, you can ru
 (conda_env) $ tox
 ```
 
+But come on, let's be real, if our package does not work when released, this means that tox will certainly not work as intended.
 
 
