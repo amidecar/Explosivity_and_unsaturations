@@ -94,6 +94,4 @@ To check if the code runs properly and give back the expected result, you can ru
 (conda_env) $ tox
 ```
 
-But come on, let's be real, if our package does not work when released, this means that tox will certainly not work as intended.
-
 
