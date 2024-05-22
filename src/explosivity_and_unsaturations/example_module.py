@@ -227,6 +227,10 @@ def submitboom():
 
     """this function makes the interface work"""
     
+    for widget in kaboomity.winfo_children():
+        if ".!notebook.!frame.!label" in str(widget):
+            widget.destroy()
+            
     saas = int(aaa.get())
     nameee = enteredname.get()
     smilesee = enteredsmiles.get()
@@ -278,6 +282,8 @@ def submitboom():
 
 def submitinsat():
     # Retrieve the input text when the submit button is clicked
+
+    print("aaaaewdsgxvbansdjiohsja")
     saas = int(aaa.get())
     nameee = enteredname.get()
     smilesee = enteredsmiles.get()
