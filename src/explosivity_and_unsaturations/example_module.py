@@ -121,25 +121,26 @@ def findgroups(smiles:str):
 def insat(smiles):                        
 
     """ this function calculates the degree of insturaton of a molecule"""
-
-    moleculee = Chem.MolFromSmiles(smiles)              # Convert the SMILES string to a molecule object
-    moleculee = Chem.AddHs(moleculee)                   # Add hydrogens
-    atom_counts = {}                  # Initialise new dict
+    splitted = smiles.split(".")
+    ddi_gen = 0
+    for smile in splitted:
+        moleculee = Chem.MolFromSmiles(smile)              # Convert the SMILES string to a molecule object
+        moleculee = Chem.AddHs(moleculee)
+        atom_counts = {}                   # Add hydrogens
     
     # Loop through atoms in the molecule and count different atom types
-    for atom in moleculee.GetAtoms():
-        atom_valence = atom.GetTotalValence()
-        if atom_valence in atom_counts:
-            atom_counts[atom_valence] += 1
-        else:
-            atom_counts[atom_valence] =1
-    ddi=0
-    for i in atom_counts.keys():
-        ddi= ddi + (i-2)*atom_counts[i]
-    ddi= (ddi + 2)/2
-    if ddi<0:
+        for atom in moleculee.GetAtoms():
+            atom_valence = atom.GetTotalValence()
+            if atom_valence in atom_counts:
+                atom_counts[atom_valence] += 1
+            else:
+                atom_counts[atom_valence] =1
         ddi=0
-    return ddi
+        for i in atom_counts.keys():
+            ddi= ddi + (i-2)*atom_counts[i]
+        ddi= (ddi + 2)/2
+        ddi_gen += ddi
+    return ddi_gen
 
 
 def findinsaturation(smiles:str):
@@ -283,7 +284,9 @@ def submitboom():
 def submitinsat():
     # Retrieve the input text when the submit button is clicked
 
-    print("aaaaewdsgxvbansdjiohsja")
+    for widget in kaboomity.winfo_children():
+        if ".!notebook.!frame.!label" in str(widget):
+            widget.destroy()
     saas = int(aaa.get())
     nameee = enteredname.get()
     smilesee = enteredsmiles.get()
