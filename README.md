@@ -99,7 +99,7 @@ Even though this program works as intended with many molecules, it has some limi
 
 The first limitation is the number of atoms in the smiles. Even though we didn't put any limitation on the smiles that can be inputted, the program works better with smiles containing 2000 atoms or less. Some tests were made and the program seems to handle smiles that contain a maximum of 2095 atoms. If you want to use this package keep this in mind!
 
-Another limitation is the number of bond a single atom can have. From our test, the maximum seems to 127 bonds. This shouldn't be a problem for plausible molecules but it still is a limitation.
+Another limitation is the number of bond a single atom can have. From our test, the maximum seems to be 127 bonds. This shouldn't be a problem for plausible molecules but it still is a limitation.
 
-The tkinter window appearence is mofified in Mac-OS. Some labels overlap and are not visually pleasing. The functionality is not modified however. The visual interface may be modified in the future to accomodate this.
+The tkinter window appearence is modified in Mac-OS. Some labels overlap and are not visually pleasing. The functionality is not modified however. The visual interface may be modified in the future to accomodate this.
 
