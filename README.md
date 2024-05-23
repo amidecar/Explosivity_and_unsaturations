@@ -85,7 +85,7 @@ To install the package, run
 (explosivity_and_unsaturations) $ pip install -e ".[test,doc]"
 ```
 
-### How can I be sure the package works as intended?
+## How can I be sure the package works as intended?
 
 To check if the code runs properly and give back the expected result, you can run this two lines in you terminal
 
@@ -94,4 +94,12 @@ To check if the code runs properly and give back the expected result, you can ru
 (conda_env) $ tox
 ```
 
+## Limitations and known issues
+
+Even though this program works as intended with many molecules, it has some limitations. 
+The first limitation is the number of atoms in the smiles. Even though we didn't make any limitation in the smiles that can be inputted, the program works better with smiles containing 2000 atoms or less. Some tests were made and the program seems to handle smiles that contain a maximum of 2095 atoms. If you want to use this package keep this in mind!
+
+Another limitation is the number of bond a single atom can have. From our test, the maximum seems to 127 bonds. This shouldn't be a problem for plausible molecules but it still is a limitation.
+
+The tkinter window appearence is mofified in Mac-OS. Some labels overlap and are not visually pleasing. The functionality is not modified however. The visual interface may be modified in the future to accomodate this.
 
