@@ -26,19 +26,18 @@ First, clone the respository on your own device
 git clone https://github.com/amidecar/Explosivity_and_unsaturations
 ```
 
-Select the environment in which you want to install the package or,
-Create a new environment, you may also give the environment a different name. 
+Select the environment in which you want to install the package or create a new environment, you may also give the environment a different name. 
 
 ```
-conda create -n explosivity_and_unsaturations python=3.10 
+conda create -n your_conda_env python=3.10 
 ```
 
 install the package from the cloned repository
 
 ```
-conda activate explosivity_and_unsaturations
+conda activate your_conda_env
 cd path/to/your/cloned/repository
-(conda_env)  pip install .
+(your_conda_env)  pip install .
 ```
 
 If you need jupyter lab to use the package, install it
@@ -82,7 +81,7 @@ Then add and commit changes as usual.
 To install the package, run
 
 ```
-(explosivity_and_unsaturations) $ pip install -e ".[test,doc]"
+(your_conda_env) $ pip install -e ".[test,doc]"
 ```
 
 ## How can I be sure the package works as intended?
@@ -90,8 +89,8 @@ To install the package, run
 To check if the code runs properly and give back the expected result, you can run this two lines in you terminal
 
 ```
-(conda_env) $ pip install tox
-(conda_env) $ tox
+(your_conda_env) $ pip install tox
+(your_conda_env) $ tox
 ```
 
 ## Limitations and known issues
