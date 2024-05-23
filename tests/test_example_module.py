@@ -14,6 +14,8 @@ def test_insat():
     assert insat("C") == 0, "Test failed: the wrong value was returned"
     assert insat("C#C") == 2, "Test failed: the wrong value was returned"
     assert insat("C1CCCCC1") == 1,"Test failed: the wrong value was returned"
+    assert insat("[NH4+].[N+](=O)([O-])[O-]") == 1, "Test failed: the wrong value was returned"
+    assert insat("[Al].[Al].[Al].[Al].[Al].[Al].[Al].[Al].[Al].[Al].[Al].[Al].[Al].[Al].[Al]") == 0, "Test failed: the wrong value was returned"
     
 def test_ismetal():
     assert ismetal(Chem.Atom("C")) == False,"Test failed: the wrong value was returned"
