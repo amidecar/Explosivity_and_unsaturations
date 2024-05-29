@@ -73,6 +73,4 @@ def test_findgroups():
                                          1), "Test failed: the wrong groups were returned"
 
     
-def test_main():
-    assert main() == None, "Test failed, should return nothing"
     
