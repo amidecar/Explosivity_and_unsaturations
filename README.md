@@ -1,10 +1,21 @@
-Tests coverage (not including graphical interface): <img src="assets/coverage-badge.svg" title="boom">
+
 
 <p align="center">
 
   <img src="assets/boom2.png" width="286" title="boom">
+  
+
 
 </p>
+
+<p align="center">
+
+  <img src="assets/coverage-badge.svg" title="boom">
+  
+
+
+</p>
+
 
 <h1 align="center">
 explosivity_and_unsaturations
