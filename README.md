@@ -54,7 +54,7 @@ cd path/to/your/cloned/repository
 ```
 
 If you need jupyter lab to use the package, install it
-Or install any other code editor you like such as vscode or spyder
+or install any other code editor you like such as vscode or spyder
 
 ```
 (explosivity_and_unsaturations) $ pip install jupyterlab
