@@ -1,5 +1,5 @@
 from explosivity_and_unsaturations.example_module import balox, insat, ismetal, iupac_to_smiles
-from explosivity_and_unsaturations.example_module import explosivity,canonicalize_smiles, findinsaturation, findgroups
+from explosivity_and_unsaturations.example_module import explosivity,canonicalize_smiles, findinsaturation, findgroups, main
 from rdkit import Chem
 
 
@@ -73,5 +73,6 @@ def test_findgroups():
                                          1), "Test failed: the wrong groups were returned"
 
     
-    
+def test_main():
+    assert main() == None, "Test failed, should return nothing"
     
